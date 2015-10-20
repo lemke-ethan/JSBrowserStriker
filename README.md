@@ -1,7 +1,7 @@
-PgwBrowser
-=========
+JSBrowserStriker
+================
 
-The full documentation and an example are available on [**PgwJS.com**/PgwBrowser](http://pgwjs.com/pgwbrowser/).
+This tool gathers information about the user agent and user agents OS (using [PgwBrowser](https://github.com/Pagawa/PgwBrowser/)) and redirects that user to specific page, depending on the conditions that were specified in the configurations.jsbrowserstriker.json file.
 
 Installation
 ---------
@@ -26,16 +26,12 @@ jQuery 1.0 or Zepto.js 1.0 (minimal version)
 Contributing
 ---------
 
-All issues or pull requests must be submitted through GitHub.
+All pull requests must be submitted through GitHub.
 
-* To report an issue or a feature request, please use [GitHub Issues](https://github.com/Pagawa/PgwBrowser/issues).
 * To make a pull request, please create a new branch for each feature or issue.
 
 
 ChangeLog
 ---------
 
-* 2015-03-19 - Added new elements (Version 1.3)
-* 2014-08-17 - Added more browsers and platforms (Version 1.2)
-* 2014-08-03 - Added resize and orientation events (Version 1.1)
-* 2014-08-02 - First commit (Version 1.0)
+* 2015-10-20 - init (Version 0.1)
