@@ -13,10 +13,6 @@ According to your system, select the preferred installation mode:
 Download the plugin by cliking the button **Download ZIP** on the right.  
 To get the plugin updates, fork it on Github and regularly verify your plugin version.
 
-### Node / NPM
-
-    npm install pgwbrowser
-
 Requirements
 ---------
 
