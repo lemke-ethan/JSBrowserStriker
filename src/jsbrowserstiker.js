@@ -235,15 +235,6 @@ function redirectClient(url) {
 	window.location.replace(url);
 }
 
-function validateUserAgentObject(userAgent) {
-	// no names or group names, then we do not know what we are looking for
-	if (userAgent.name == null && userAgent.group == null &&
-		userAgent.os.name == null && userAgent.os.group == null) {
-		return false;
-	}
-	return true;
-}
-
 function olderVersionString(older, newer) {
 	var olderArray = older.split(".");
 	var newerArray = newer.split(".");
