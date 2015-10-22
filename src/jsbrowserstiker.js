@@ -1,59 +1,3 @@
-/*
-*imported from pgwbrowser
-
-BROWSER NAMES AND GROUPS
-````````````````````````
-    name: 'Chromium',          group: 'Chrome'
-    name: 'Chrome Mobile',     group: 'Chrome'
-    name: 'Chrome',            group: 'Chrome'
-    name: 'Chrome for iOS',    group: 'Chrome'
-    name: 'Android Browser',   group: 'Chrome'
-    name: 'Firefox',           group: 'Firefox'
-    name: 'Opera Mini',        group: 'Opera'
-    name: 'Opera',             group: 'Opera'
-    name: 'Opera',             group: 'Opera'
-    name: 'IEMobile',          group: 'Explorer'
-    name: 'Internet Explorer', group: 'Explorer'
-    name: 'Internet Explorer', group: 'Explorer'
-    name: 'Spartan',           group: 'Spartan'
-	name: 'Safari',            group: 'Safari'
-
-OS NAMES AND GROUPS
-```````````````````
-    name: 'Windows 2000',           group: 'Windows'
-    name: 'Windows XP',             group: 'Windows'
-    name: 'Windows Vista',          group: 'Windows'
-    name: 'Windows 7',              group: 'Windows'
-    name: 'Windows 8',              group: 'Windows'
-    name: 'Windows 8.1',            group: 'Windows'
-    name: 'Windows 10',             group: 'Windows'
-    name: 'Windows Phone',          group: 'Windows Phone'
-    name: 'Windows Phone',          group: 'Windows Phone'
-    name: 'Windows',                group: 'Windows'
-    name: 'Chrome OS',              group: 'Chrome OS'
-    name: 'Android',                group: 'Android'
-    name: 'iPad',                   group: 'iOS'
-    name: 'iPod',                   group: 'iOS'
-    name: 'iPhone',                 group: 'iOS'
-    name: 'Mac OS X Yosemite',      group: 'Mac OS'
-    name: 'Mac OS X Mavericks',     group: 'Mac OS'
-    name: 'Mac OS X Mountain Lion', group: 'Mac OS'
-    name: 'Mac OS X Lion',          group: 'Mac OS'
-    name: 'Mac OS X Snow Leopard',  group: 'Mac OS'
-    name: 'Mac OS X Leopard',       group: 'Mac OS'
-    name: 'Mac OS X Tiger',         group: 'Mac OS'
-    name: 'Mac OS X Panther',       group: 'Mac OS'
-    name: 'Mac OS X Jaguar',        group: 'Mac OS'
-    name: 'Mac OS X Puma',          group: 'Mac OS'
-    name: 'Mac OS X Cheetah',       group: 'Mac OS'
-    name: 'Mac OS',                 group: 'Mac OS'
-    name: 'Ubuntu',                 group: 'Linux'
-    name: 'Debian',                 group: 'Linux'
-    name: 'Gentoo',                 group: 'Linux'
-    name: 'Linux',                  group: 'Linux'
-    name: 'BlackBerry',             group: 'BlackBerry'
-*/
-
 // user configurations - chrome example data
 var UserConfiguration = {
 	redirectURL:"http://www.amsoil.com/SecurityUpdate2015.aspx",
@@ -282,8 +226,10 @@ function olderVersion(fullVersion, major, minor, clientFullVersion, clientMajor,
 }
 
 function userAgentsEquivalent(userAgent, clientUserAgent) {
+	// assume that both of the user agent objects are not valid
 	var ua = false;
 	var os = false;
+
 	// UA names
 	if (userAgent.name != null && 
 		clientUserAgent.name != null &&
@@ -338,7 +284,8 @@ function userAgentsEquivalent(userAgent, clientUserAgent) {
 		);
 	}
 
-	return (os || ua);
+	// user can specify UA or an OS or both
+	return (ua || os);
 }
 
 function validateBrowser() {
