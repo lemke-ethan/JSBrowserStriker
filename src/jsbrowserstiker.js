@@ -151,10 +151,32 @@ var UserConfiguration = {
 			os: null
 		},
 	},
+	cookieSettings: {
+		// default name is "jsbrowserstriker"
+		name: "ams_jsbs",
+		// the amount of seconds, from the time that the cookie is created, before the cookie expires
+		// default expiration is 1 day = 86400 seconds
+		expire: null,
+		// default path is "/"
+		path: null
+	}
 };
 
-// TODO add a cookie manager
-var CookieManager = {};
+function setCookie(name, value, secondsUntilExpired, path) {
+	// setup cookie data
+	var cookieData = name + "=" + value; 	
+	var date = new Date();
+	date.setTime(date.getTime()+(secondsUntilExpired*1000));
+	var cookieExpiration = "expires=" + date.toGMTString();
+	var cookiePath = "path=" + path;
+
+	// add cookies
+	document.cookie = encodeURIComponent(cookieData);
+	document.cookie = encodeURIComponent(cookieExpiration);
+	document.cookie = encodeURIComponent(cookiePath);
+
+	return true;
+}
 
 // get browser data 
 var clientUserAgent = $.pgwBrowser();
@@ -294,8 +316,14 @@ function validateBrowser() {
 		// check to see if the blocked UA object matches the config object
 		if (UserConfiguration.blockedUserAgents.hasOwnProperty(userAgent)) {
 			if (userAgentsEquivalent(userAgent, clientUserAgent)) {
-				// redirect to url specified in the config
-				redirectClient(UserConfiguration.redirectURL);
+				// set the user's cookie
+				var name = (UserConfiguration.cookieSettigns.name || "jsbrowserstriker");
+				var expire = (UserConfiguration.cookieSettigns.expire || 86400);
+				var path = (UserConfiguration.cookieSettigns.path || "/");
+				if (setCookie(name, "true", expire, path)) {
+					// redirect to url specified in the config
+					redirectClient(UserConfiguration.redirectURL);
+				}				
 			}
 		}
 	}
