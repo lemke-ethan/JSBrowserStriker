@@ -1,14 +1,15 @@
 # JSBrowserStriker
 This tool gathers information about the user agent and user agents OS (using [PgwBrowser](https://github.com/Pagawa/PgwBrowser/)) and redirects that user to specific page, depending on the conditions that were specified src/jsbrowserstriker.js file.
 
-## Explanation
+Explanation
+-----------
 Specify all of the JSBrowserStriker settings in the UserConfiguration object in the src/jsbrowserstriker.js file. You can specify the URL to redirect to and what users, with a specific user agent and/or operating system, to redirect.
 
 * TODO *
 
-'''
+'''javascript
 var UserConfiguration = {
-	redirectURL:"http://www.amsoil.com/SecurityUpdate2015.aspx",
+	redirectURL:"http://www.example.com/exampe.aspx",
 	blockedUserAgents: {
 		chrome: {
 			blockAllVersions: false,
@@ -30,7 +31,8 @@ var UserConfiguration = {
 }
 '''
 
-### BROWSER NAMES AND GROUPS
+BROWSER NAMES AND GROUPS
+-----------
     name: 'Chromium',          group: 'Chrome'
     name: 'Chrome Mobile',     group: 'Chrome'
     name: 'Chrome',            group: 'Chrome'
@@ -46,7 +48,8 @@ var UserConfiguration = {
     name: 'Spartan',           group: 'Spartan'
 	name: 'Safari',            group: 'Safari'
 
-### OS NAMES AND GROUPS
+OS NAMES AND GROUPS
+-----------
     name: 'Windows 2000',           group: 'Windows'
     name: 'Windows XP',             group: 'Windows'
     name: 'Windows Vista',          group: 'Windows'
@@ -80,14 +83,16 @@ var UserConfiguration = {
     name: 'Linux',                  group: 'Linux'
     name: 'BlackBerry',             group: 'BlackBerry'
 
-## Installation
+Installation
+
 1. Download the plugin by cliking the button **Download ZIP** on the right. 
 2. Extract the contents of the ZIP file to your web project's folder.
 3. Include the following JavaScript files in your header:
   a. src/jsbrowserstriker.js
   b. packages/pgwbrowser.js
 
-## Requirements
+Requirements
+-----------
 jQuery 1.0 or Zepto.js 1.0 (minimal version)
 
 Contributing
