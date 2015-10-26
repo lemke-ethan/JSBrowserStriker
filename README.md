@@ -7,37 +7,37 @@ Specify all of the JSBrowserStriker settings in the UserConfiguration object in 
 
 **Example**
 ```
-    var UserConfiguration = {
-    	redirectURL:"http://www.example.com/exampe.aspx",
-    	blockedUserAgents: {
-    		chrome: {
+var UserConfiguration = {
+    redirectURL:"http://www.example.com/exampe.aspx",
+    blockedUserAgents: {
+    	chrome: {
+    		blockAllVersions: false,
+    		name: "chrome",
+    		group: null,
+    		fullVersion: null,
+    		majorVersion: 30,
+    		minorVersion: 0,
+    		os: {
     			blockAllVersions: false,
-    			name: "chrome",
-    			group: null,
+    			name: "android",
+    			group: "android",
     			fullVersion: null,
-    			majorVersion: 30,
-    			minorVersion: 0,
-    			os: {
-    				blockAllVersions: false,
-    				name: "android",
-    				group: "android",
-    				fullVersion: null,
-    				majorVersion: 4,
-    				minorVersion: 3
-    			}
+    			majorVersion: 4,
+    			minorVersion: 3
     		}
     	}
-        cookieSettings: {
-            // default name is "amsjsbrowserstriker"
-            name: "amsjsbs",
-            // the amount of seconds, from the time that the 
-            // cookie is created, before the cookie expires
-            // default expiration is 1 day = 86400 seconds
-            expire: null,
-            // default path is "/"
-            path: null
-        }
     }
+	cookieSettings: {
+	    // default name is "amsjsbrowserstriker"
+	    name: "amsjsbs",
+	    // the amount of seconds, from the time that the 
+	    // cookie is created, before the cookie expires
+	    // default expiration is 1 day = 86400 seconds
+	    expire: null,
+	    // default path is "/"
+	    path: null
+	}
+}
 ```
 
 ### BROWSER NAMES AND GROUPS
