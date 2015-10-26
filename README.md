@@ -93,7 +93,7 @@ Specify all of the JSBrowserStriker settings in the UserConfiguration object in 
 ## Installation
 1. Download the plugin by cliking the button **Download ZIP** on the right.
 2. Extract the contents of the ZIP file to your web project's folder.
-3. Include the following JavaScript files in your header:
+3. Include the following JavaScript files in your header.
     a. First packages/cookie.js
     b. Then packages/pgwbrowser.js
     c. And finally, src/jsbrowserstriker.js
