@@ -1,38 +1,43 @@
-# JSBrowserStriker
-This tool gathers information about the user agent and user agents OS (using [PgwBrowser](https://github.com/Pagawa/PgwBrowser/)) and redirects that user to specific page, depending on the conditions that were specified src/jsbrowserstriker.js file.
+JSBrowserStriker
+================
+This tool gathers information about the user agent and user agent's OS (using [PgwBrowser](https://github.com/Pagawa/PgwBrowser/)) and redirects that user to specific page, depending on the conditions that were specified in the UserConfiguration object in the src/jsbrowserstriker.js file.
 
-Explanation
------------
-Specify all of the JSBrowserStriker settings in the UserConfiguration object in the src/jsbrowserstriker.js file. You can specify the URL to redirect to and what users, with a specific user agent and/or operating system, to redirect.
+## Explanation
+Specify all of the JSBrowserStriker settings in the UserConfiguration object in the src/jsbrowserstriker.js file. You can specify the URL to redirect to, the cookie information and what user agents will be redirected.
 
-* TODO *
+**Example**
+    var UserConfiguration = {
+    	redirectURL:"http://www.example.com/exampe.aspx",
+    	blockedUserAgents: {
+    		chrome: {
+    			blockAllVersions: false,
+    			name: "chrome",
+    			group: null,
+    			fullVersion: null,
+    			majorVersion: 30,
+    			minorVersion: 0,
+    			os: {
+    				blockAllVersions: false,
+    				name: "android",
+    				group: "android",
+    				fullVersion: null,
+    				majorVersion: 4,
+    				minorVersion: 3
+    			}
+    		}
+    	}
+        cookieSettings: {
+            // default name is "amsjsbrowserstriker"
+            name: "amsjsbs",
+            // the amount of seconds, from the time that the cookie is created, before the cookie expires
+            // default expiration is 1 day = 86400 seconds
+            expire: null,
+            // default path is "/"
+            path: null
+        }
+    }
 
-'''javascript
-var UserConfiguration = {
-	redirectURL:"http://www.example.com/exampe.aspx",
-	blockedUserAgents: {
-		chrome: {
-			blockAllVersions: false,
-			name: "chrome",
-			group: null,
-			fullVersion: null,
-			majorVersion: 30,
-			minorVersion: 0,
-			os: {
-				blockAllVersions: false,
-				name: "android",
-				group: "android",
-				fullVersion: null,
-				majorVersion: 4,
-				minorVersion: 3
-			}
-		}
-	}
-}
-'''
-
-BROWSER NAMES AND GROUPS
------------
+### BROWSER NAMES AND GROUPS
     name: 'Chromium',          group: 'Chrome'
     name: 'Chrome Mobile',     group: 'Chrome'
     name: 'Chrome',            group: 'Chrome'
@@ -48,8 +53,7 @@ BROWSER NAMES AND GROUPS
     name: 'Spartan',           group: 'Spartan'
 	name: 'Safari',            group: 'Safari'
 
-OS NAMES AND GROUPS
------------
+### OS NAMES AND GROUPS
     name: 'Windows 2000',           group: 'Windows'
     name: 'Windows XP',             group: 'Windows'
     name: 'Windows Vista',          group: 'Windows'
@@ -83,24 +87,22 @@ OS NAMES AND GROUPS
     name: 'Linux',                  group: 'Linux'
     name: 'BlackBerry',             group: 'BlackBerry'
 
-Installation
-
+## Installation
 1. Download the plugin by cliking the button **Download ZIP** on the right. 
 2. Extract the contents of the ZIP file to your web project's folder.
 3. Include the following JavaScript files in your header:
-  a. src/jsbrowserstriker.js
-  b. packages/pgwbrowser.js
+    a. src/jsbrowserstriker.js
+    b. packages/pgwbrowser.js
+    c. packages/cookie.js
+4. Call the `validateBrowser()` function and pass it the return value of `pgwBrowser()`.
 
-Requirements
------------
+## Requirements
 jQuery 1.0 or Zepto.js 1.0 (minimal version)
 
-Contributing
----------
+## Contributing
 All pull requests must be submitted through GitHub.
 
-* To make a pull request, please create a new branch for each feature or issue. *
+*To make a pull request, please create a new branch for each feature or issue.*
 
-ChangeLog
----------
+## ChangeLog
 * 2015-10-20 - init (Version 0.1) 

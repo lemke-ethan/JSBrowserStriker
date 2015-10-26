@@ -42,10 +42,10 @@ function pgwBrowser() {
         { name: 'Windows 8', group: 'Windows', identifier: 'Windows NT 6.2', version: '8.0' },
         { name: 'Windows 8.1', group: 'Windows', identifier: 'Windows NT 6.3', version: '8.1' },
         { name: 'Windows 10', group: 'Windows', identifier: 'Windows NT 10.0', version: '10.0' },
-        { name: 'Windows Phone', group: 'Windows Phone', identifier: 'Windows Phone ([0-9\.]*)', },
-        { name: 'Windows Phone', group: 'Windows Phone', identifier: 'Windows Phone OS ([0-9\.]*)', },
-        { name: 'Windows', group: 'Windows', identifier: 'Windows', },
-        { name: 'Chrome OS', group: 'Chrome OS', identifier: 'CrOS', },
+        { name: 'Windows Phone', group: 'Windows Phone', identifier: 'Windows Phone ([0-9\.]*)' },
+        { name: 'Windows Phone', group: 'Windows Phone', identifier: 'Windows Phone OS ([0-9\.]*)' },
+        { name: 'Windows', group: 'Windows', identifier: 'Windows' },
+        { name: 'Chrome OS', group: 'Chrome OS', identifier: 'CrOS' },
         { name: 'Android', group: 'Android', identifier: 'Android', versionIdentifier: 'Android ([a-zA-Z0-9\.-]*)' },
         { name: 'iPad', group: 'iOS', identifier: 'iPad', versionIdentifier: 'OS ([0-9_]*)', versionSeparator: '[_|\.]' },
         { name: 'iPod', group: 'iOS', identifier: 'iPod', versionIdentifier: 'OS ([0-9_]*)', versionSeparator: '[_|\.]' },
@@ -63,10 +63,10 @@ function pgwBrowser() {
         { name: 'Mac OS X Cheetah', group: 'Mac OS', identifier: 'Mac OS X (10([_|\.])0([0-9_\.]*))', versionSeparator: '[_|\.]' },
         { name: 'Mac OS', group: 'Mac OS', identifier: 'Mac OS' },
         { name: 'Ubuntu', group: 'Linux', identifier: 'Ubuntu', versionIdentifier: 'Ubuntu/([0-9\.]*)' },
-        { name: 'Debian', group: 'Linux', identifier: 'Debian', },
-        { name: 'Gentoo', group: 'Linux', identifier: 'Gentoo', },
-        { name: 'Linux', group: 'Linux', identifier: 'Linux', },
-        { name: 'BlackBerry', group: 'BlackBerry', identifier: 'BlackBerry', }
+        { name: 'Debian', group: 'Linux', identifier: 'Debian' },
+        { name: 'Gentoo', group: 'Linux', identifier: 'Gentoo' },
+        { name: 'Linux', group: 'Linux', identifier: 'Linux' },
+        { name: 'BlackBerry', group: 'BlackBerry', identifier: 'BlackBerry' }
     ];
 
     //  Set browser data
@@ -78,7 +78,7 @@ function pgwBrowser() {
             var browserRegExp = new RegExp(browserData[i].identifier.toLowerCase());
             var browserRegExpResult = browserRegExp.exec(userAgent);
 
-            if (browserRegExpResult != null && browserRegExpResult[1]) {
+            if (browserRegExpResult !== null && browserRegExpResult[1]) {
                 pgwBrowser.browser.name = browserData[i].name;
                 pgwBrowser.browser.group = browserData[i].group;
 
@@ -87,7 +87,7 @@ function pgwBrowser() {
                     var versionRegExp = new RegExp(browserData[i].versionIdentifier.toLowerCase());
                     var versionRegExpResult = versionRegExp.exec(userAgent);
 
-                    if (versionRegExpResult != null && versionRegExpResult[1]) {
+                    if (versionRegExpResult !== null && versionRegExpResult[1]) {
                         setBrowserVersion(versionRegExpResult[1]);
                     }
 
@@ -109,12 +109,12 @@ function pgwBrowser() {
 
         // Major version
         if (splitVersion[0]) {
-            pgwBrowser.browser.majorVersion = parseInt(splitVersion[0]);
+            pgwBrowser.browser.majorVersion = parseInt(splitVersion[0], 10);
         }
 
         // Minor version
         if (splitVersion[1]) {
-            pgwBrowser.browser.minorVersion = parseInt(splitVersion[1]);
+            pgwBrowser.browser.minorVersion = parseInt(splitVersion[1], 10);
         }
 
         return true;
@@ -129,7 +129,7 @@ function pgwBrowser() {
             var osRegExp = new RegExp(osData[i].identifier.toLowerCase());
             var osRegExpResult = osRegExp.exec(userAgent);
 
-            if (osRegExpResult != null) {
+            if (osRegExpResult !== null) {
                 pgwBrowser.os.name = osData[i].name;
                 pgwBrowser.os.group = osData[i].group;
 
@@ -146,7 +146,7 @@ function pgwBrowser() {
                     var versionRegExp = new RegExp(osData[i].versionIdentifier.toLowerCase());
                     var versionRegExpResult = versionRegExp.exec(userAgent);
 
-                    if (versionRegExpResult != null && versionRegExpResult[1]) {
+                    if (versionRegExpResult !== null && versionRegExpResult[1]) {
                         setOsVersion(versionRegExpResult[1], (osData[i].versionSeparator) ? osData[i].versionSeparator : '.');
                     }
                 }
@@ -160,10 +160,11 @@ function pgwBrowser() {
 
     // Set OS version
     var setOsVersion = function (version, separator) {
+        var splitVersion;
         if (separator.substr(0, 1) == '[') {
-            var splitVersion = version.split(new RegExp(separator, 'g'), 2);
+            splitVersion = version.split(new RegExp(separator, 'g'), 2);
         } else {
-            var splitVersion = version.split(separator, 2);
+            splitVersion = version.split(separator, 2);
         }
 
         if (separator != '.') {
@@ -174,12 +175,12 @@ function pgwBrowser() {
 
         // Major version
         if (splitVersion[0]) {
-            pgwBrowser.os.majorVersion = parseInt(splitVersion[0]);
+            pgwBrowser.os.majorVersion = parseInt(splitVersion[0], 10);
         }
 
         // Minor version
         if (splitVersion[1]) {
-            pgwBrowser.os.minorVersion = parseInt(splitVersion[1]);
+            pgwBrowser.os.minorVersion = parseInt(splitVersion[1], 10);
         }
 
         return true;
@@ -192,7 +193,7 @@ function pgwBrowser() {
 
         // Resize triggers
         if (typeof init == 'undefined') {
-            if (resizeEvent == null) {
+            if (resizeEvent === null) {
                 $(window).trigger('PgwBrowser::StartResizing');
             } else {
                 clearTimeout(resizeEvent);
