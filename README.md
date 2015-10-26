@@ -30,7 +30,8 @@ Specify all of the JSBrowserStriker settings in the UserConfiguration object in 
         cookieSettings: {
             // default name is "amsjsbrowserstriker"
             name: "amsjsbs",
-            // the amount of seconds, from the time that the cookie is created, before the cookie expires
+            // the amount of seconds, from the time that the 
+            // cookie is created, before the cookie expires
             // default expiration is 1 day = 86400 seconds
             expire: null,
             // default path is "/"
@@ -93,9 +94,9 @@ Specify all of the JSBrowserStriker settings in the UserConfiguration object in 
 1. Download the plugin by cliking the button **Download ZIP** on the right.
 2. Extract the contents of the ZIP file to your web project's folder.
 3. Include the following JavaScript files in your header:
-    a. src/jsbrowserstriker.js
-    b. packages/pgwbrowser.js
-    c. packages/cookie.js
+    a. First packages/cookie.js
+    b. Then packages/pgwbrowser.js
+    c. And finally, src/jsbrowserstriker.js
 4. Call the `validateBrowser()` function and pass it the return value of `pgwBrowser()`.
 
 ## Requirements
