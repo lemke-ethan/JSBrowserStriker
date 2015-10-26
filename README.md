@@ -6,6 +6,7 @@ This tool gathers information about the user agent and user agent's OS (using [P
 Specify all of the JSBrowserStriker settings in the UserConfiguration object in the src/jsbrowserstriker.js file. You can specify the URL to redirect to, the cookie information and what user agents will be redirected.
 
 **Example**
+```
     var UserConfiguration = {
     	redirectURL:"http://www.example.com/exampe.aspx",
     	blockedUserAgents: {
@@ -36,6 +37,7 @@ Specify all of the JSBrowserStriker settings in the UserConfiguration object in 
             path: null
         }
     }
+```
 
 ### BROWSER NAMES AND GROUPS
     name: 'Chromium',          group: 'Chrome'
@@ -88,7 +90,7 @@ Specify all of the JSBrowserStriker settings in the UserConfiguration object in 
     name: 'BlackBerry',             group: 'BlackBerry'
 
 ## Installation
-1. Download the plugin by cliking the button **Download ZIP** on the right. 
+1. Download the plugin by cliking the button **Download ZIP** on the right.
 2. Extract the contents of the ZIP file to your web project's folder.
 3. Include the following JavaScript files in your header:
     a. src/jsbrowserstriker.js
