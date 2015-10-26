@@ -94,9 +94,9 @@ Specify all of the JSBrowserStriker settings in the UserConfiguration object in 
 1. Download the plugin by cliking the button **Download ZIP** on the right.
 2. Extract the contents of the ZIP file to your web project's folder.
 3. Include the following JavaScript files in your header.
-    a. First packages/cookie.js
-    b. Then packages/pgwbrowser.js
-    c. And finally, src/jsbrowserstriker.js
+    1. First packages/cookie.js
+    2. Then packages/pgwbrowser.js
+    3. And finally, src/jsbrowserstriker.js
 4. Call the `validateBrowser()` function and pass it the return value of `pgwBrowser()`.
 
 ## Requirements
